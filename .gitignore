@@ -1,0 +1,15 @@
+#nodejs specific
+node_modules/
+
+#editor specific
+.idea/
+
+#RPGMaker specific
+libs/
+main.js
+plugins.js
+rpg_*.js
+
+#project specific
+plugins/*
+!plugins/CreatureEssentials.js
