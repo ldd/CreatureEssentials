@@ -10,7 +10,7 @@
   },
 
   "rules": {
-    "no-undefined": 2, // disallow use of undefined variable (off by default)
+    "no-undefined": 0, // allow use of undefined variable (off by default)
     "no-unused-vars": 2, // disallow declaration of variables that are not used in the code
     "quotes": [2, "single"]
   }

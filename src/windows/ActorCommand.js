@@ -6,12 +6,16 @@ Window_ActorCommand.prototype.numVisibleRows = function() {
 Window_ActorCommand.prototype.maxCols = function() {
   return 2;
 };
-Window_ActorCommand.prototype.makeCommandList = function() {
-  if (this._actor) {
-    var skills = this._actor.skills();
-    var i, len = skills.length;
-    for(i=0;i<len;i++){
-      this.addCommand(skills[i].name,'skill',true, skills[i]);
-    }
-  }
+// Window_ActorCommand.prototype.initialize = function() {
+//     var y = Graphics.boxHeight - this.windowHeight();
+//     Window_Command.prototype.initialize.call(this, 0, y);
+//     this.openness = 0;
+//     this.deactivate();
+// };
+
+Window_ActorCommand.prototype.makeCommandList = function () {
+    this.addCommand('FIGHT', 'fight');
+    this.addCommand('BAG', 'item');
+    this.addCommand('TEAM', 'team');
+    this.addCommand('RUN', 'escape', BattleManager.canEscape());
 };
