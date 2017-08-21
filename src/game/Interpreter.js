@@ -1,12 +1,11 @@
 'use strict';
 
 //capture a creature
-function captureCreature(dataActor, catchRate, catchCondition){
-    catchCondition = catchCondition || function(){return true};
-    if(catchCondition(dataActor) && catchRate)
-        if(catchRate){
-
-        }
+function captureCreature(dataActor /*, catchRate, catchCondition*/ ){
+    // catchCondition = catchCondition || function(){return true};
+    // if(catchCondition(dataActor) && catchRate)
+    //     if(catchRate){
+    //     }
     var capturedEnemy = JSON.parse(JSON.stringify(dataActor));
 
     // give initial properties
@@ -17,9 +16,14 @@ function captureCreature(dataActor, catchRate, catchCondition){
     capturedEnemy._uuid = Utils.generateUuid();
     // capturedEnemy.initialLevel = parseInt(level);
 
-    // add actor
-    $gameActors.actor(capturedEnemy._uuid,1);
-    $gameParty.addActor(capturedEnemy._uuid);
+
+    // if party is not full, add it to the party, otherwise do not
+    var isInParty = $gameParty._actors.length < $gameParty.maxBattleMembers();
+
+    $gameActors.actor(capturedEnemy._uuid,1, !isInParty);
+    if(!!isInParty){
+        $gameParty.addActor(capturedEnemy._uuid);
+    }
 }
 
 var pluginCommand = Game_Interpreter.prototype.pluginCommand;

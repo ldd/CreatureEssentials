@@ -1,5 +1,9 @@
 'use strict';
 
+Game_Party.prototype.maxBattleMembers = function() {
+    return 6;
+};
+
 Game_Party.prototype.setupStartingMembers = function() {
     this._actors = [];
     this._actorsDic = {};
